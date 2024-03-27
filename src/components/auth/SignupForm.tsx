@@ -5,6 +5,7 @@ import {
   PersonIcon,
 } from "@radix-ui/react-icons";
 import { Button, Flex, Text, TextField } from "@radix-ui/themes";
+import axios from "axios";
 import { Controller, useForm } from "react-hook-form";
 
 type FormInputs = {
@@ -29,8 +30,9 @@ function SignupForm() {
     },
   });
 
-  const onSubmit = handleSubmit((data) => {
-    console.log(data);
+  const onSubmit = handleSubmit(async (data) => {
+    const response = await axios.post("/api/auth/register", data);
+    console.log(response);
   });
   return (
     <form onSubmit={onSubmit}>
