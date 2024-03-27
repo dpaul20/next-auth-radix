@@ -1,6 +1,6 @@
 import SignupForm from "@/components/auth/SignupForm";
-import { Card, Container, Flex, Heading, Text } from "@radix-ui/themes";
-import Link from "next/link";
+import { Card, Container, Flex, Heading, Link, Text } from "@radix-ui/themes";
+import NextLink from "next/link";
 
 function RegisterPage() {
   return (
@@ -12,7 +12,10 @@ function RegisterPage() {
             <SignupForm />
             <Flex justify={"between"} className="mt-4 px-4">
               <Text>
-                Already have an account? <Link href="/auth/login">Sign In</Link>
+                Already have an account?
+                <Link asChild>
+                  <NextLink href="/auth/login"> Sign in</NextLink>
+                </Link>
               </Text>
             </Flex>
           </Card>
