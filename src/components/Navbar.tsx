@@ -11,16 +11,19 @@ import { signOut, useSession } from "next-auth/react";
 import NextLink from "next/link";
 
 function Navbar() {
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
+
+  if (status === "loading") return null;
+  
   return (
-    <nav className="bg-zinc-950 py-4">
+    <nav className="bg-zinc-950 py-4 px-4 md:px">
       <Container>
         <Flex justify={"between"} align={"center"}>
           <NextLink href="/">
             <Heading>RadixNext</Heading>
           </NextLink>
 
-          <ul className="flex gap-x-2 items-center">
+          <ul className="flex gap-x-4 items-center">
             {!session && (
               <>
                 <li>
@@ -30,7 +33,7 @@ function Navbar() {
                 </li>
                 <li>
                   <Link asChild>
-                    <NextLink href="/auth/register">Register</NextLink>
+                    <NextLink href="/auth/register">Sign p</NextLink>
                   </Link>
                 </li>
               </>
@@ -47,7 +50,7 @@ function Navbar() {
                   <DropdownMenu.Root>
                     <DropdownMenu.Trigger>
                       <Button variant="soft">
-                        {session?.user?.name}
+                        {session.user.name}
                         <DropdownMenu.TriggerIcon />
                       </Button>
                     </DropdownMenu.Trigger>

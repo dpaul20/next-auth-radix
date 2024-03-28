@@ -54,7 +54,7 @@ function SignupForm() {
   return (
     <form onSubmit={onSubmit}>
       <Flex className="flex flex-col gap-4 p-4">
-        <label htmlFor="name">Name</label>
+        <label htmlFor="name" className="text-xs">Name</label>
         <Controller
           name="name"
           control={control}
@@ -87,7 +87,7 @@ function SignupForm() {
             {errors.name.message}
           </Text>
         )}
-        <label htmlFor="email">Email</label>
+        <label htmlFor="email" className="text-xs">Email</label>
         <Controller
           name="email"
           control={control}
@@ -119,7 +119,7 @@ function SignupForm() {
             {errors.email.message}
           </Text>
         )}
-        <label htmlFor="password">Password</label>
+        <label htmlFor="password" className="text-xs">Password</label>
         <Controller
           name="password"
           control={control}
@@ -151,7 +151,7 @@ function SignupForm() {
             {errors.password.message}
           </Text>
         )}
-        <label htmlFor="confirm-password">Confirm Password</label>
+        <label htmlFor="confirm-password" className="text-xs">Confirm Password</label>
         <Controller
           name="confirmPassword"
           control={control}
