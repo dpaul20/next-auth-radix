@@ -8,6 +8,7 @@ import {
   TextArea,
   TextField,
 } from "@radix-ui/themes";
+import axios from "axios";
 import { Controller, useForm } from "react-hook-form";
 
 function TaskNewPage() {
@@ -23,7 +24,11 @@ function TaskNewPage() {
   });
 
   const onSubmit = handleSubmit(async (data) => {
-    console.log(data);
+    const response = await axios.post("/api/projects", data);
+
+    if (response.status === 201) {
+      alert("Task created successfully");
+    }
   });
   return (
     <Container size={"1"} height={"100%"} className="p-3 md:p-0">
